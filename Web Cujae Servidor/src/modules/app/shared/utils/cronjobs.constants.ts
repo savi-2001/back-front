@@ -1,0 +1,3 @@
+export const CRONJOBS = {
+	JWT_BLACKLIST_JOB: 'JWT_BLACKLIST_JOB',
+}

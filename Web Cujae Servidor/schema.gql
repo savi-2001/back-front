@@ -1,0 +1,724 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Pagination {
+  totalElements: Int!
+  hasNextPage: Boolean!
+  lastPage: Int!
+  nextPage: Int!
+  previousPage: Int!
+}
+
+type CursorPagination {
+  totalElements: Int!
+  hasNext: Boolean!
+  hasPrevious: Boolean!
+  next: String
+  previous: String
+}
+
+type Log {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  host: String
+  metadata: JSON
+  remote_addr: String
+  time_local: String
+  method: String
+  path: String
+  protocol: String
+  status: Int
+  body_bytes_sent: Int
+  http_referer: String
+  http_user_agent: String
+  http_x_forwarded_for: String
+  browser: String
+  os: String
+  country_code: String
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type ManyLogs {
+  pagination: Pagination!
+  elements: [Log!]!
+}
+
+type ManyCursorLogs {
+  pagination: CursorPagination!
+  elements: [Log!]!
+}
+
+type ActionOverLog {
+  element: Log
+  id: String
+  action: ModelActions!
+}
+
+enum ModelActions {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+type PageView {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  path: String
+  ip: String
+  referer: String
+  os: String
+  browser: String
+  country_code: String
+  http_user_agent: String
+}
+
+type ActionOverPageView {
+  element: PageView
+  id: String
+  action: ModelActions!
+}
+
+type Article {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  title: String!
+  author: JSON
+  images: [String!]
+  datePublished: DateTime!
+  dateModified: DateTime
+  articleBody: String!
+  summary: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ManyArticles {
+  pagination: Pagination!
+  elements: [Article!]!
+}
+
+type ManyCursorArticles {
+  pagination: CursorPagination!
+  elements: [Article!]!
+}
+
+type ActionOverArticle {
+  element: Article
+  id: String
+  action: ModelActions!
+}
+
+type Event {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  startDate: DateTime
+  endDate: DateTime
+  eventAttendanceMode: String
+  eventStatus: String
+  location: String
+  images: [String!]
+  title: String
+  description: String
+}
+
+type ManyEvents {
+  pagination: Pagination!
+  elements: [Event!]!
+}
+
+type ManyCursorEvents {
+  pagination: CursorPagination!
+  elements: [Event!]!
+}
+
+type ActionOverEvent {
+  element: Event
+  id: String
+  action: ModelActions!
+}
+
+type Ticket {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  sender_email: String
+  metadata: JSON
+  sender_name: String
+  question: String!
+  answer: String
+  status: String
+  uid: String
+}
+
+type ManyTickets {
+  pagination: Pagination!
+  elements: [Ticket!]!
+}
+
+type ManyCursorTickets {
+  pagination: CursorPagination!
+  elements: [Ticket!]!
+}
+
+type ActionOverTicket {
+  element: Ticket
+  id: String
+  action: ModelActions!
+}
+
+type ResourceGrant {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  resource: String!
+  permission: String!
+  roleName: String
+  userId: String
+}
+
+type ManyResourceGrants {
+  pagination: Pagination!
+  elements: [ResourceGrant!]!
+}
+
+type ActionOverResourceGrant {
+  element: ResourceGrant
+  id: String
+  action: ModelActions!
+}
+
+type Role {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  name: String!
+  parentName: String
+}
+
+type ManyRoles {
+  pagination: Pagination!
+  elements: [Role!]!
+}
+
+type ActionOverRole {
+  element: Role
+  id: String
+  action: ModelActions!
+}
+
+type RoleUser {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  userId: String!
+  roleName: String!
+}
+
+type ManyRoleUsers {
+  pagination: Pagination!
+  elements: [RoleUser!]!
+}
+
+type ActionOverRoleUser {
+  element: RoleUser
+  id: String
+  action: ModelActions!
+}
+
+type User {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  _deleted: Boolean
+  _createdBy: String
+  _updatedBy: String
+  _deletedBy: String
+  roles: [String!]!
+  meta: JSON
+  email: String!
+  name: String!
+  accountStatus: String
+}
+
+type ManyUsers {
+  pagination: Pagination!
+  elements: [User!]!
+}
+
+type ActionOverUser {
+  element: User
+  id: String
+  action: ModelActions!
+}
+
+type UserPayload {
+  user: User!
+  token: String!
+  refreshToken: String!
+}
+
+type Query {
+  log_getById(input: GetByIdInput!): Log!
+  log_getOne(input: GetOneInput!): Log!
+  log_getMany(input: GetManyInput!): ManyLogs!
+  log_getManyCursor(input: GetManyCursorInput!): ManyCursorLogs!
+  log_distinct(input: DistinctInput!): [String!]!
+  log_count(input: CountInput!): Int!
+  log_exists(input: CountInput!): Boolean!
+  article_getById(input: GetByIdInput!): Article!
+  article_getOne(input: GetOneInput!): Article!
+  article_getMany(input: GetManyInput!): ManyArticles!
+  article_getManyCursor(input: GetManyCursorInput!): ManyCursorArticles!
+  article_distinct(input: DistinctInput!): [String!]!
+  article_count(input: CountInput!): Int!
+  article_exists(input: CountInput!): Boolean!
+  event_getById(input: GetByIdInput!): Event!
+  event_getOne(input: GetOneInput!): Event!
+  event_getMany(input: GetManyInput!): ManyEvents!
+  event_getManyCursor(input: GetManyCursorInput!): ManyCursorEvents!
+  event_distinct(input: DistinctInput!): [String!]!
+  event_count(input: CountInput!): Int!
+  event_exists(input: CountInput!): Boolean!
+  ticket_getById(input: GetByIdInput!): Ticket!
+  ticket_getOne(input: GetOneInput!): Ticket!
+  ticket_getMany(input: GetManyInput!): ManyTickets!
+  ticket_getManyCursor(input: GetManyCursorInput!): ManyCursorTickets!
+  ticket_distinct(input: DistinctInput!): [String!]!
+  ticket_count(input: CountInput!): Int!
+  ticket_exists(input: CountInput!): Boolean!
+  user_getMany(input: GetManyInput!): ManyUsers!
+  user_exists(input: CountInput!): Boolean!
+  resource_grant_getMany(input: GetManyInput!): ManyResourceGrants!
+  role_getMany(input: GetManyInput!): ManyRoles!
+  role_user_getMany(input: GetManyInput!): ManyRoleUsers!
+  getMe: User!
+}
+
+input GetByIdInput {
+  id: ID!
+  populate: [Populate!]
+  select: String
+  softDelete: SoftDelete
+}
+
+input Populate {
+  path: String!
+  select: String
+  model: String
+  match: JSON
+  options: Options
+}
+
+input Options {
+  limit: Int
+}
+
+enum SoftDelete {
+  All
+  Deleted
+  NotDeleted
+}
+
+input GetOneInput {
+  populate: [Populate!]
+  select: String
+  where: JSON!
+  softDelete: SoftDelete
+}
+
+input GetManyInput {
+  pagination: PaginationInput
+  params: Params
+  softDelete: SoftDelete
+}
+
+input PaginationInput {
+  """Pagination page"""
+  page: Int = 1
+
+  """Pagination limit"""
+  limit: Int = 10
+
+  """Skip elements"""
+  skip: Int
+}
+
+input Params {
+  where: JSON
+  populate: [Populate!]
+  aggregate: [JSON!]
+  select: String
+  distinct: String
+  sort: String
+}
+
+input GetManyCursorInput {
+  pagination: CursorPaginationInput
+  where: JSON
+  populate: [String!]
+  softDelete: SoftDelete
+}
+
+input CursorPaginationInput {
+  """Pagination limit"""
+  limit: Int = 10
+
+  """Field to sort"""
+  sortField: String
+
+  """Define if sort ascending"""
+  sortAscending: Boolean
+
+  """Pagination cursor"""
+  cursor: String
+}
+
+input DistinctInput {
+  field: String!
+  where: JSON
+  softDelete: SoftDelete
+}
+
+input CountInput {
+  where: JSON
+  softDelete: SoftDelete
+}
+
+type Mutation {
+  article_create(input: CreateArticle!): Article!
+  article_updateById(input: UpdateByIdArticle!): Article!
+  article_updateOne(input: UpdateOneArticle!): Article!
+  article_deleteById(input: DeleteByIdInput!): Article!
+  article_deleteOne(input: DeleteOneInput!): Article!
+  event_create(input: CreateEvent!): Event!
+  event_updateById(input: UpdateByIdEvent!): Event!
+  event_updateOne(input: UpdateOneEvent!): Event!
+  event_deleteById(input: DeleteByIdInput!): Event!
+  event_deleteOne(input: DeleteOneInput!): Event!
+  ticket_create(input: CreateTicket!): Ticket!
+  ticket_updateById(input: UpdateByIdTicket!): Ticket!
+  ticket_updateOne(input: UpdateOneTicket!): Ticket!
+  ticket_deleteById(input: DeleteByIdInput!): Ticket!
+  ticket_deleteOne(input: DeleteOneInput!): Ticket!
+  user_create(input: CreateUser!): User!
+  user_updateById(input: UpdateByIdUser!): User!
+  user_deleteById(input: DeleteByIdInput!): User!
+  resource_grant_create(input: CreateResourceGrant!): ResourceGrant!
+  resource_grant_updateById(input: UpdateByIdResourceGrant!): ResourceGrant!
+  resource_grant_deleteById(input: DeleteByIdInput!): ResourceGrant!
+  role_create(input: CreateRole!): Role!
+  role_updateById(input: UpdateByIdRole!): Role!
+  role_deleteById(input: DeleteByIdInput!): Role!
+  role_user_create(input: CreateRoleUser!): RoleUser!
+  role_user_updateById(input: UpdateByIdRoleUser!): RoleUser!
+  role_user_deleteById(input: DeleteByIdInput!): RoleUser!
+  adminRegisterUser(input: RegisterUserInput!): JSON!
+  verifyEmail(token: String!): JSON!
+  resendEmailVerification(email: String!): JSON!
+  forgotPassword(email: String, phoneNumber: String): JSON!
+  changePassword(input: UpdatePasswordDto!): JSON!
+  resetPassword(input: ResetPasswordDto!): JSON!
+  login(input: LoginInputDto!): UserPayload!
+  refreshToken: UserPayload!
+  verifyExistsPasswordForget(input: VerifyTokenPasswordDto!): JSON!
+  setUserEmail(email: String!, password: String!): JSON!
+  logout: JSON!
+}
+
+input CreateArticle {
+  data: CreateArticleInput!
+  scenarios: [String!]
+}
+
+input CreateArticleInput {
+  title: String!
+  author: JSON
+  images: [String!]
+  datePublished: DateTime!
+  dateModified: DateTime
+  articleBody: String!
+  summary: String
+}
+
+input UpdateByIdArticle {
+  data: UpdateArticleInput!
+  scenarios: [String!]
+}
+
+input UpdateArticleInput {
+  title: String
+  author: JSON
+  images: [String!]
+  datePublished: DateTime
+  dateModified: DateTime
+  articleBody: String
+  summary: String
+  id: String
+}
+
+input UpdateOneArticle {
+  where: JSON!
+  data: UpdateArticleInput!
+  scenarios: [String!]
+}
+
+input DeleteByIdInput {
+  id: ID!
+  soft: Boolean = true
+}
+
+input DeleteOneInput {
+  where: JSON!
+  soft: Boolean = true
+}
+
+input CreateEvent {
+  data: CreateEventInput!
+  scenarios: [String!]
+}
+
+input CreateEventInput {
+  startDate: DateTime
+  endDate: DateTime
+  eventAttendanceMode: String
+  eventStatus: String
+  location: String
+  images: [String!]
+  title: String
+  description: String
+}
+
+input UpdateByIdEvent {
+  data: UpdateEventInput!
+  scenarios: [String!]
+}
+
+input UpdateEventInput {
+  startDate: DateTime
+  endDate: DateTime
+  eventAttendanceMode: String
+  eventStatus: String
+  location: String
+  images: [String!]
+  title: String
+  description: String
+  id: String
+}
+
+input UpdateOneEvent {
+  where: JSON!
+  data: UpdateEventInput!
+  scenarios: [String!]
+}
+
+input CreateTicket {
+  data: CreateTicketInput!
+  scenarios: [String!]
+}
+
+input CreateTicketInput {
+  sender_email: String
+  metadata: JSON
+  sender_name: String
+  question: String!
+  answer: String
+  status: String
+  uid: String
+}
+
+input UpdateByIdTicket {
+  data: UpdateTicketInput!
+  scenarios: [String!]
+}
+
+input UpdateTicketInput {
+  sender_email: String
+  metadata: JSON
+  sender_name: String
+  question: String
+  answer: String
+  status: String
+  uid: String
+  id: String
+}
+
+input UpdateOneTicket {
+  where: JSON!
+  data: UpdateTicketInput!
+  scenarios: [String!]
+}
+
+input CreateUser {
+  data: CreateUserInput!
+  scenarios: [String!]
+}
+
+input CreateUserInput {
+  meta: JSON
+  email: String!
+  name: String!
+  accountStatus: String
+}
+
+input UpdateByIdUser {
+  data: UpdateUserInput!
+  scenarios: [String!]
+}
+
+input UpdateUserInput {
+  meta: JSON
+  email: String
+  name: String
+  accountStatus: String
+  id: String
+}
+
+input CreateResourceGrant {
+  data: CreateResourceGrantInput!
+  scenarios: [String!]
+}
+
+input CreateResourceGrantInput {
+  resource: String!
+  permission: String!
+  roleName: String
+  userId: String
+}
+
+input UpdateByIdResourceGrant {
+  data: UpdateResourceGrantInput!
+  scenarios: [String!]
+}
+
+input UpdateResourceGrantInput {
+  resource: String
+  permission: String
+  roleName: String
+  userId: String
+  id: ID!
+}
+
+input CreateRole {
+  data: CreateRoleInput!
+  scenarios: [String!]
+}
+
+input CreateRoleInput {
+  name: String!
+  parentName: String
+}
+
+input UpdateByIdRole {
+  data: UpdateRoleInput!
+  scenarios: [String!]
+}
+
+input UpdateRoleInput {
+  name: String
+  parentName: String
+  id: ID!
+}
+
+input CreateRoleUser {
+  data: CreateRoleUserInput!
+  scenarios: [String!]
+}
+
+input CreateRoleUserInput {
+  userId: String!
+  roleName: String!
+}
+
+input UpdateByIdRoleUser {
+  data: UpdateRoleUserInput!
+  scenarios: [String!]
+}
+
+input UpdateRoleUserInput {
+  userId: String
+  roleName: String
+  id: ID!
+}
+
+input RegisterUserInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+input UpdatePasswordDto {
+  oldPassword: String!
+  newPassword: String!
+}
+
+input ResetPasswordDto {
+  passwordToken: String!
+  email: String!
+  newPassword: String!
+}
+
+input LoginInputDto {
+  email: String
+  password: String!
+}
+
+input VerifyTokenPasswordDto {
+  passwordToken: String!
+  email: String!
+}
+
+type Subscription {
+  log_actionSubscription: ActionOverLog!
+  page_view_actionSubscription: ActionOverPageView!
+  article_actionSubscription: ActionOverArticle!
+  event_actionSubscription: ActionOverEvent!
+  ticket_actionSubscription: ActionOverTicket!
+  user_actionSubscription: ActionOverUser!
+  resource_grant_actionSubscription: ActionOverResourceGrant!
+  role_actionSubscription: ActionOverRole!
+  role_user_actionSubscription: ActionOverRoleUser!
+}
